@@ -11,7 +11,7 @@ df = df.reset_index(drop=True)
 pd.options.mode.chained_assignment = None
 # g = 0
 g = g+1
-df.iloc[0, df.columns.get_loc('depMapID')] = "g" + str(g)
+df.iloc[0, df.columns.get_loc('depMapID')] = g
 start_old = df["Start"][0]
 n = len(df.index)
 for i in range(1,n):
@@ -19,7 +19,7 @@ for i in range(1,n):
     if start_new != start_old and not (start_new < start_old + range_index):
         g = g + 1
         start_old = start_new
-    df.iloc[i, df.columns.get_loc('depMapID')] = "g" + str(g)
+    df.iloc[i, df.columns.get_loc('depMapID')] = g
 
 
 writer = ExcelWriter(r'C:\Users\Asus\AnacondaProjects\IP\cX_pp.xlsx')
